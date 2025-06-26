@@ -1,3 +1,4 @@
+<%@page import="com.gn.dto.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -67,5 +68,46 @@
 		}
 	%>
 	<p>세션 정보 : <%= memberId %></p>
+	
+
+	<%
+		Account account = null;
+		if (session != null) {
+			// 사용자의 아이디가 admin이고, 비밀번호가 admin1234일 때 : account 정보와 같을 때
+			if (session.getAttribute("account") != null) {
+				// 정상 로그인
+				Account a = (Account)session.getAttribute("account");
+	%>
+		<p><%= a.getName() %> 님 환영합니다!<p>
+		<a href="/logout">로그아웃</a>
+		
+	<%
+			} else {
+	%>
+		<!-- 정보를 servlet에 넘겨주려면 name값을 만들어야 됨 -->
+		<form action="/login" method="post">
+			<label for="account_id">아이디 : </label>
+			<input type="text" name="login_id" id="account_id"><br>
+			<label>비밀번호 : </label>
+			<input type="password" name="login_pw" id="account_id">
+			<input type="submit" value="로그인">
+		</form>
+	<%
+			}
+		}
+		
+	 %> <br>
+
+
+		
+	<form action="/productList" method="post">
+		<select name="products">
+			<option value="키보드">키보드</option>
+			<option value="마우스">마우스</option>
+			<option value="모니터">모니터</option>
+		</select>
+	    <button type="submit">장바구니 추가</button>
+	</form>
+	
 </body>
 </html>
