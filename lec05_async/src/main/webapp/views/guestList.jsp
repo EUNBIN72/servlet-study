@@ -21,6 +21,16 @@
 		<input type="text" id="guest_Message" name="guest_Message">
 		<button type="submit" id="register_btn">등록</button>
 	</form>
+	
+	
+	
+	
+	<ul>
+		<li></li>
+	</ul>
+	
+	
+	
 
 </body>
 </html>
