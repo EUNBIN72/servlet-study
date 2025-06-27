@@ -224,9 +224,37 @@
 	</script>
 	
 	
+
 	
+	<h1>방명록 비동기 통신</h1>
+	<a href="guestList">방명록 페이지로 이동</a>
 	
-	
+	<div id="ajax_post_div"></div>
+	<script>
+			$(document).ready(function() {
+				$("#register_btn").click(function(){
+					const name = $("#name").val();  
+					const message = $("#message").val();
+					const date = $("#date").val();
+					$.ajax({
+						url : "/postResultAjax",
+						type : "post",
+						data : {
+							name: name,
+							message: message,
+							date: date
+		                },
+						success : function(data) {
+							$("#resultArea").html('<p>'+result+"</p>");
+						},
+						error : function() {
+							alert("서버 요청 실패!");
+						}
+						
+					});
+				});
+			});
+		</script>
 	
 	
 	
