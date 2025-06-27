@@ -42,7 +42,9 @@
 	%>
 	<p>user_id 쿠키값 : <%= userId %></p>
 	<br>
-	<a href="/changePage">방문 횟수 추적하기</a>
+	<li>
+		<a href="/changePage">방문 횟수 추적하기</a>
+	</li>
 	
 	
 	<h1>Session</h1>
@@ -100,7 +102,7 @@
 
 
 		
-	<form action="/productList" method="post">
+	<form action="/productList" multiple="multiple" method="post">
 		<select name="products">
 			<option value="키보드">키보드</option>
 			<option value="마우스">마우스</option>
