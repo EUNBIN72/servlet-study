@@ -20,6 +20,18 @@
 		</li>
 	</ol>
 		 
+		 
+	<h2>과제) JSTL의 forEach 사용하여 별찍기</h2>
+    <form action="views/star.jsp" method="get">
+        <label>숫자를 선택하세요: </label>
+        <select name="count">
+            <c:forEach var="i" begin="1" end="5">
+                <option value="${i}">${i}</option>
+            </c:forEach>
+        </select>
+        <button type="submit">출력하기</button>
+    </form>
+
 
 </body>
 </html>

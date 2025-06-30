@@ -32,6 +32,12 @@ public class StudentListServlet extends HttpServlet {
 //		5. Mapper에 있는 쿼리 실행
 //		=> 학생 정보 목록 조회
 //		6. /views/studentList.jsp로 보내기
+		
+		// 2. 조회한 결과를 request에 저장
+		request.setAttribute("students", list);
+
+		// 3. JSP로 포워딩
+		request.getRequestDispatcher("/views/studentList.jsp").forward(request, response);
 	}
 
 
