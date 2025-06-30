@@ -1,11 +1,13 @@
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page import="com.gn.dto.Person" %>
 <%@page import="com.gn.dto.Planet"%>
 <%@page import="java.util.List"%>
 <!-- JSTL 사용을 위함 -->
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,8 +153,17 @@
 	
 	
 	<h1>5. JSTL Core Library</h1>
+	<!-- JSTL 라이브러리
+		1. 코어 : 일반 프로그램 언어에서 제공하는 변수선언, 조건/제어/반복문 등의 기능을 제공 | c
+		2. 포맷팅 : 숫자, 날짜, 시간을 포맷팅하는 기능과 국제화, 다국어 지원 기능을 제공 | fmt
+		3. 함수 : 문자열을 처리하는 함수를 제공 | fn
+		4. 데이터베이스 : 데이터베이스의 데이터를 입력/수정/삭제/조회하는 기능을 제공 | sql
+		5. XML처리 : 문서를 처리할 때 필요한 기능을 제공 | x
+																		 -->
+	
+	
 	<h2>(1) 변수 선언</h2>
-	<!-- c:set 사용 
+	<!-- c:set 사용 | 저장 영역에 객체를 저장 
 		1. 자료형 선언하지 않음
 		2. 초기값 반드시 작성  
 		3. c:set으로 지정한 값 스크립틀릿에서 꺼내 쓸 수 없음
@@ -162,6 +173,7 @@
 	<c:set var="plus" value="${num3 + num4 }"/>
 	
 	<h2>(2) 변수 출력</h2>
+	<!-- 객체를 화면에 출력 -->
 	<c:set var="result" value="<b>안녕하세요!</b>" />
 	<c:out value="${result }"/>
 	<c:out value="${result }" escapeXml="false"/>
@@ -223,13 +235,44 @@
 		</p>
 	</c:forEach>	
 	
+	<script src="<%=request.getContextPath() %>resources/jquery-3.7.1/js">
+	</script>
+	<a href="<%=request.getContextPath() %>/boardList">게시판</a>
+	
+	<script src="<c:url value='/resources/jquery-3.7.1.js'/>">
+	</script>
+	<a href="<c:url value='/boardList'/>">게시판</a>
+	<!-- 파라미터 사용하기 -->
+	<c:url var="testUrl" value="/boardList">
+		<c:param name="nowPage" value="1"/>	
+	</c:url>
+	<a href="${testUrl }">게시판</a>
+	
+	<h1>8. JSTL Formatting Library</h1>
+	<!-- 값을 따로 입력하지 않아도 value 값에 쓴 값이 그대로 출력됨 -->
+	<h2>(1) 숫자 정보 포맷팅</h2>
+	<fmt:formatNumber value="1234.567" type="number"/><br>
+	<fmt:formatNumber value="0.875" type="percent"/><br>
+	
+	<!-- pattern은 원하는 형식의 패턴대로 출력 -->
+	<fmt:formatNumber value="1234.567" pattern="#,###.##"/><br>
+	<fmt:formatNumber value="1234.5" pattern="00000.00"/><br>
+	
+	<h2>(2) 날짜 정보 포맷팅</h2>
+	<c:set var="now" value="<%= new java.util.Date() %>"/>
+	<fmt:formatDate value="${now }" type="date"/><br>
+	<fmt:formatDate value="${now }" pattern="yy-MM-dd HH:mm:ss"/>
+	
+	
+	<h1>9. JSTL Function Library</h1>
+	<c:set var="data" value="How Are You? I am fine"/>
+	<p><c:out value="${data }"/></p>
+	<p><c:out value="${fn:toUpperCase(data) }"/></p>
+	<p><c:out value="${fn:replace(data, 'fine', 'apple') }"/></p>
+	
+	
 	
 
-	
-	
-	
-	
-	
-	
+
 </body>
 </html>
