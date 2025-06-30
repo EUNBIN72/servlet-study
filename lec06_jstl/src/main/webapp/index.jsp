@@ -4,6 +4,8 @@
 <%@ page import="com.gn.dto.Person" %>
 <%@page import="com.gn.dto.Planet"%>
 <%@page import="java.util.List"%>
+<!-- JSTL 사용을 위함 -->
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,6 +148,87 @@
 			${kor gt eng and not empty heroList ? "true" : "false"}
 			${math lt 80 or eng gt 90 ? "true" : "false"}
 		</p>
+	
+	
+	<h1>5. JSTL Core Library</h1>
+	<h2>(1) 변수 선언</h2>
+	<!-- c:set 사용 
+		1. 자료형 선언하지 않음
+		2. 초기값 반드시 작성  
+		3. c:set으로 지정한 값 스크립틀릿에서 꺼내 쓸 수 없음
+		스크립틀릿에서 setting한 값은 jstl에서 꺼내쓸 수 있음  -->
+	<c:set var="num3" value="10" scope="page"/>
+	<c:set var="num4" value="20"/>
+	<c:set var="plus" value="${num3 + num4 }"/>
+	
+	<h2>(2) 변수 출력</h2>
+	<c:set var="result" value="<b>안녕하세요!</b>" />
+	<c:out value="${result }"/>
+	<c:out value="${result }" escapeXml="false"/>
+	
+	<h2>(3) 조건문 : if</h2>
+	<c:if test="${num3 le num4 }">
+		<p>num3가 num4보다 작거나 같네요~</p>
+	</c:if>
+	
+	<h2>(4) 조건문 :choose</h2>
+	<!-- choose는 반드시 있어야됨
+		when -> else if문 같은거 / 여러개 써도 됨
+		when이 처음 오면 if 같은거 when 두번째부터는 else if문 같은거
+		otherwise -> else 같은거 / 한번만 가능 / 조건문 안씀 -->
+	<c:choose>
+		<c:when test="${num1 gt 20 }">
+			<p>num3이 20보다 큽니까?</p>
+		</c:when>
+		<c:when test="${num1 ge 10 }">
+			<p>num3이 20보다 작거나 같으면서, 10보다 크거나 같습니까?</p>
+		</c:when>
+		<c:otherwise>
+			<p>1. num3이 20보다 작거나 같다.
+			2. num3이 10보다 작다.
+			=> num3이 10보다 작습니까?</p>
+		</c:otherwise>
+	</c:choose>
+	
+	<h1>6. 사이트 테마 설정</h1>
+	<form method="post" action="/setTheme">
+	    <button type="submit" name="theme" value="dark">다크모드</button>
+	    <button type="submit" name="theme" value="light">라이트모드</button>
+	</form>
+	
+
+	<h2>(5) 반복문 : forEach</h2>
+	<!-- 기본 for문처럼 사용하기 
+		var : 변수명 / begin : / end : step : -->
+	
+	<c:forEach var="i" begin="1" end="10" step="2">
+		<p>반복 숫자 : ${i }</p>
+	</c:forEach>
+	
+	<!-- 향상된 for문처럼 사용하기 -->
+	<%
+		String[] colors = {"red", "green", "blue"};
+		request.setAttribute("colors", colors);
+	%>
+	<ul>
+		<c:forEach var="color" items="${colors }">
+			<li style="color:${color }">${color }</li>
+		</c:forEach>
+	</ul>
+	<!-- varStatus 속성 -->
+	<c:forEach var="num" begin="0" end="5" varStatus="vs">
+		<p>
+			숫자 : ${num}, 인덱스 : ${vs.index }, 카운트 : ${vs.count },
+			첫번째? : ${vs.first }, 마지막? : ${vs.last } 
+		</p>
+	</c:forEach>	
+	
+	
+
+	
+	
+	
+	
 	
 	
 </body>
