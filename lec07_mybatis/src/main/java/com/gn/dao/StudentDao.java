@@ -50,4 +50,24 @@ public class StudentDao {
 	}
 	
 	
+	// Service한테 Student를 전달받았어
+	// 전달받은 정보를 가지고 update 하고 싶어
+	public int update(Student param) {
+		SqlSession session = SessionTemplate.getSqlSession(true);
+		int result = session.update("com.gn.mapper.StudentMapper.update", param);
+		session.close();
+		return result;
+	}
+	
+	
+	public int delete(int no) {
+		SqlSession session = SessionTemplate.getSqlSession(true);
+		int result = session.delete("com.gn.mapper.StudentMapper.delete", no);
+		session.close();
+		return result;
+	}
+	
+	
+	
+	
 }

@@ -14,4 +14,11 @@ public interface StudentMapper {
 	Student selectOneByName(String studentName);
 	
 	int insert(Student param);
+	
+	// 메소드명 : updateStudent
+	// 반환형 : int
+	// 매개변수 : Student student
+	int update(Student student);
+	
+	int delete(int no);
 }
