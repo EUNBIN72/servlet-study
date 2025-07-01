@@ -13,4 +13,26 @@ public class StudentService {
 		List<Student> list = dao.selectAll();
 		return list;
 	}
+	
+	public Student getStudentDetail(int studentNo) {
+		Student student = dao.selectOne(studentNo);
+		return student;
+	}
+	
+	public List<Student> getStudentSearch(String studentName) {
+		List<Student> student = dao.selectOneByName(studentName);
+		return student;
+	}
+	
+	public int insertStudent(String name, int age) {
+		// 1. Map : DTO에 없는 필드가 있을 경우, 3개 이하
+		
+		// 2. DTO(Student)
+		Student param = new Student();
+		param.setStudentName(name);
+		param.setStudentAge(age);
+		
+		return dao.insert(param);
+		
+	}
 }

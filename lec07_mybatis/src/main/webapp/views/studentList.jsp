@@ -1,28 +1,36 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.gn.dao.StudentDao"%>
 <%@page import="com.gn.dto.Student"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>학생 목록</title>
 </head>
 <body>
-	<%
-		StudentDao dao = new StudentDao();  // 객체 생성
-		List<Student> list = dao.selectAll(); // 학생 목록 조회
-	    for(Student st : list) {
-	%>
-	    <p>
-	        번호: <%= st.getStudentNo() %> <br>
-	        이름: <%= st.getStudentName() %> <br>
-	        나이: <%= st.getStudentAge() %>
-	    </p>
-	<%
-	    }
-	%>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>나이</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="s" items="${students }">
+				<tr onclick="location.href='/student/detail?no=${s.studentNo}'">
+					<td>${s.studentNo }</td>
+					<td>${s.studentName }</td>
+					<td>${s.studentAge }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	
+	</table>
 	
 </body>
 </html>

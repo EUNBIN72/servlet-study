@@ -28,6 +28,8 @@ public class StudentListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		3. Service에 정보 전달
 		List<Student> list = service.getStudentList();
+		// 콘솔에 list 출력해보기
+		System.out.println(list);
 		
 //		4. DAO에 데이터베이스 연결 요청
 //		5. Mapper에 있는 쿼리 실행

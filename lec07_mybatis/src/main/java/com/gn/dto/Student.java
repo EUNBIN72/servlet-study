@@ -1,4 +1,6 @@
 package com.gn.dto;
+// 데이터를 담는 바구니
+// 정보를 넣었다가 뺐다가 함
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

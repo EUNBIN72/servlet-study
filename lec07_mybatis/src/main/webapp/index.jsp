@@ -19,6 +19,13 @@
 			<a href="<c:url value='/student/list'/>">학생 목록 조회</a>
 		</li>
 	</ol>
+	
+	<!-- 입력된 이름이 포함된 모든 학생의 정보를 출력
+		화면 : studentSearch.jsp 만들어서 출력 또는 표준 출력 -->
+	<form action="<c:url value='/student/search'/>" method="get">
+		<input type="text" name="student_name">	
+		<input type="submit" value="이름 기준 검색">	
+	</form>
 		 
 		 
 	<h2>과제) JSTL의 forEach 사용하여 별찍기</h2>
@@ -31,7 +38,8 @@
         </select>
         <button type="submit">출력하기</button>
     </form>
-
+	
+	<a href="<c:url value='/student/insert'/>">학생 등록</a>
 
 </body>
 </html>
