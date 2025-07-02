@@ -46,8 +46,8 @@ public class StudentUpdateServlet extends HttpServlet {
 		int result = service.updateStudent(no, name, age);
 		
 
-		// 4. 만약에 결과가 0보다 크면 : 목록 화면 전환 다시 요청 (sendRedirect)
-		// 0보다 크지 않다면 : 수정 화면 재요청 -> 반드시 쿼리 스트링 사용!!
+		// 4. 만약에 결과가 0보다 크면(잘 동작하면) : 목록 화면 전환 다시 요청 (sendRedirect)
+		// 0보다 크지 않다면(잘 동작하지 않으면) : 수정 화면 재요청 -> 반드시 쿼리 스트링 사용!!
 		if(result > 0) { 
 			response.sendRedirect("/student/list");
 		} else {
