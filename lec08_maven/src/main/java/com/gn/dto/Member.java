@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 
 public class Member {
+	private String memberNo;
 	private String memberId;
 	private String memberPw;
 

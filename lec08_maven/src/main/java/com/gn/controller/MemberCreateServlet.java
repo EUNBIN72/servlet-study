@@ -47,6 +47,7 @@ public class MemberCreateServlet extends HttpServlet {
 		
 		int result = service.insertMember(id, pw);
 		
+		// 결과가 정상적일때
 		if (result > 0) {
 			obj.put("res_code", "200");
 			obj.put("res_msg", "회원가입 성공!!");

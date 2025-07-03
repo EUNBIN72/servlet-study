@@ -9,10 +9,17 @@ public class MemberDao {
 	
 	public int insertMember(Member param) {
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
-		int result = session.insert("com.gn.mapper.MemberMapper.insert", param);
+		int result = session.insert("com.gn.mapper.MemberMapper.insertMember", param);
 		session.close();
 		return result;
 		
+	}
+
+	public Member selectMember(Member param) {
+	    SqlSession session = SqlSessionTemplate.getSqlSession(true);
+	    Member result = session.selectOne("com.gn.mapper.MemberMapper.selectMember", param);
+	    session.close();
+	    return result;
 	}
 
 }
