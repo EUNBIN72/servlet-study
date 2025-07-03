@@ -19,8 +19,7 @@
 	</select>
 	
 	<select id="selectOne" resultMap="studentResultMap">
-		SELECT *
-			FROM student
+		SELECT * FROM student
 			<where>
 				student_no = #{studentNo}
 			</where>
