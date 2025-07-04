@@ -18,5 +18,6 @@ public class Board extends Paging {
 	private String modDate;
 	
 	private String memberId;
+	private String keyword;
 	
 }

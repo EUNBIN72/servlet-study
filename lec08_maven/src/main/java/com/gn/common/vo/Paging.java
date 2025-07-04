@@ -97,32 +97,21 @@ public class Paging {
 	
 	//  메소드
 	private void calcPaging() {
-		// setTotalData 메소드 호출 전에 nowPage 정보 세팅
+		// setTotalData 메소드 호출 전에 nowPage 정보 셋팅
 		// 1. 현재 페이지를 기준으로 건너뛸 데이터의 개수
-		// 지금 사용자가 어디에 있는지
 		limitPageNo = (nowPage-1)*numPerPage;
-		
 		// 2. 전체 게시글 개수(totalData) 기준으로 전체 페이지 개수 계산(totalPage)
 		totalPage = (int)Math.ceil((double)totalData/numPerPage);
-		
 		// 3. 페이징바 시작 번호 계산
-		pageBarStart = ((nowPage-1)/pageBarSize)*pageBarSize + 1;
-		
-		// 4. 페이징바 끝 번호 계산
-		pageBarEnd = pageBarStart + pageBarSize - 1;
-		
-		 // 만일 끝 번호가 전체 페이지 개수보다 크면 재할당
-		if (pageBarEnd > totalPage) {
-			pageBarEnd = totalPage;
-		}
-		
+		pageBarStart = ((nowPage-1)/pageBarSize)*pageBarSize + 1; 
+		// 4. 페이징바 끝번호 계산
+		pageBarEnd = pageBarStart + pageBarSize - 1; 
+		// 만일 끝 번호가 전체 페이지 개수보다 크면 재할당
+		if(pageBarEnd > totalPage) pageBarEnd = totalPage;
 		// 5. 이전, 이후 버튼이 보이는지 여부
-		if(pageBarStart == 1) {
-			prev = false;
-		} 
-		if(pageBarEnd >= totalPage) {
-			next = false;
-		}
+		if(pageBarStart == 1) prev = false;
+		if(pageBarEnd >= totalPage) next = false;
+	}
 		
 		
 		
@@ -131,4 +120,4 @@ public class Paging {
 	
 	
 	
-}
+

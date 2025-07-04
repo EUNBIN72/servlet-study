@@ -17,10 +17,19 @@ public class BoardService {
 		return boardDao.selectBoardList(param);
 	}
 	
-	public int selectBoardCount( ) {
-		return boardDao.selectBoardCount();
+	public int selectBoardCount(Board param) {
+		return boardDao.selectBoardCount(param);
 	}
 	
+	public Board selectBoardOne(int boardNo) {
+		return boardDao.selectBoardOne(boardNo);
+	}
+	
+	public Attach selectAttachByBoardNo(int boardNo) {
+		return boardDao.selectAttachByBoardNo(boardNo);
+	}
+	
+
 	
 	
 	// 게시글 + 파일 트랜젝션 처리

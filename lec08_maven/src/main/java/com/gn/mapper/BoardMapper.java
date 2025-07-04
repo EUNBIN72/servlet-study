@@ -10,9 +10,13 @@ public interface BoardMapper {
 	
 	List<Board> selectBoardList(Board param);
 	
-	int selectBoardCount();
+	int selectBoardCount(Board param);
 	
 	int insertBoard(Board param);
 	
 	int insertAttach(Attach param);
+	
+	Board selectBoardOne(int boardNo);
+	
+	Attach selectAttachByBoardNo(int boardNo);
 }
