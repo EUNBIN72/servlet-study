@@ -17,7 +17,9 @@ public class PasswordEncryptorWrapper extends HttpServletRequestWrapper{
 	
 	@Override
 	public String getParameter(String name) {
+		// 원본 데이터를 가져오는데
 		String result = super.getParameter(name);
+		// 조건 걸어줌
 		if (name.contains("memberPw")) {
 			result = getSHA512(result);
 		}

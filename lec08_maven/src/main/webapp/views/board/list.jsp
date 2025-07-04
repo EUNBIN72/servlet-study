@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 목록</title>
 <script src="<c:url value='/resources/jquery-3.7.1.js'/>"></script>
 </head>
 <body>
 	<h1>게시판</h1>
 	<%@ include file="/views/include/nav.jsp" %>
-	<table board="1">
+	<table border="1">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -25,16 +25,22 @@
 				<tr>
 					<td>${b.boardNo }</td>
 					<td>${b.boardTitle }</td>
-					<td>${b.boardWriter }</td>
+					<td>${b.memberId }</td>
 					<td>${b.regDate }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
+	
+	
+	
 	<a href="<c:url value='/boardWrite'/>">
 		게시글 등록
 	</a>
+	
+	
 
+	
 </body>
 </html>
