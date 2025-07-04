@@ -32,7 +32,8 @@ public class BoardDetailServlet extends HttpServlet {
 		Board board = service.selectBoardOne(boardNo);
 		Attach attach = service.selectAttachByBoardNo(boardNo);
 		
-		request.setAttribute("boardNo", board);
+		request.setAttribute("board", board);
+		request.setAttribute("attach", attach);
 		
 		
 		// 3. /views/board/detail.jsp로 보내주기

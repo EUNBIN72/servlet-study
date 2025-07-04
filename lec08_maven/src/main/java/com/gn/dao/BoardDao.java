@@ -38,6 +38,13 @@ public class BoardDao {
 		return attach;
 	}
 	
+	public Attach selectAttachByAttachNo(int attachNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Attach attach = session.selectOne("com.gn.mapper.BoardMapper.selectAttachByAttachNo", attachNo);
+		session.close();
+		return attach;
+	}
+	
 	
 	public int insertBoard(SqlSession session, Board board) {
 		int result = session.insert("com.gn.mapper.BoardMapper.insertBoard",board);
